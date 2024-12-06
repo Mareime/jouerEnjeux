@@ -6,6 +6,7 @@ class User(models.Model):
     prenom = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     mot_de_passe = models.CharField(max_length=255)
+    # image = models
     score = models.IntegerField(default=300) 
     
     def _str_(self):
@@ -30,7 +31,7 @@ class UserQuestion(models.Model):
     id_user = models.ForeignKey(User, on_delete=models.CASCADE)  
     id_question = models.ForeignKey(Question, on_delete=models.CASCADE)  
     choix_correct = models.CharField(max_length=255)  
-    reponse_choisie = models.CharField(max_length=255)  #
+    reponse_choisie = models.CharField(max_length=255)  
     def _str_(self):
         return f"Réponse de {self.id_user.prenom} {self.id_user.nom} à la question {self.id_question.id}"
 # Create your models here.

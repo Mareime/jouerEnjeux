@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +28,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+STATIC_URL = '/static/'
 
+# Répertoire où Django va collecter les fichiers statiques lors du déploiement
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Ajoutez cette ligne si vous voulez organiser les fichiers statiques dans des répertoires d'application spécifiques
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Votre dossier static à la racine
+]
 # Application definition
 
 INSTALLED_APPS = [

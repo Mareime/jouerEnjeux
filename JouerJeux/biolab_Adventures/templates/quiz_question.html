@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h2>Question {{ question.id }}</h2>
+    <p>{{ question.test_question }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <input type="radio" id="choix1" name="question_{{ question.id }}" value="{{ question.choix1 }}">
+            <label for="choix1">{{ question.choix1 }}</label><br>
+
+            <input type="radio" id="choix2" name="question_{{ question.id }}" value="{{ question.choix2 }}">
+            <label for="choix2">{{ question.choix2 }}</label><br>
+
+            <input type="radio" id="choix3" name="question_{{ question.id }}" value="{{ question.choix3 }}">
+            <label for="choix3">{{ question.choix3 }}</label><br>
+
+            <input type="radio" id="choixCorrect" name="question_{{ question.id }}" value="{{ question.reponse_correct }}">
+            <label for="choixCorrect">{{ question.reponse_correct }}</label><br>
+        </div>
+        
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if user.score %}
+        <p>Your current score: {{ user.score }}</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+<body>
+    <h1>Bienvenue dans le Quiz !</h1>
+    <form method="POST" action="{% if question %}{% url 'quiz' question.id %}{% endif %}">
+        {% csrf_token %}
+        {% for question in questions %}
+        <fieldset>
+            <legend>{{ question.test_question }}</legend>
+            
+            <!-- Affichage des options pour chaque question -->
+            <!-- <label> -->
+                 <a href="{% url 'reponce' question.id 'repon' question.choix1 %}">{{ question.choix1 }}</a>
+                 <a href="{% url 'reponce' question.id 'repon' question.choix2 %}">{{ question.choix2 }}</a>
+                 <a href="{% url 'reponce' question.id  'repon' question.choix3 %}">{{ question.choix3 }}</a>
+                <!-- <input type="radio" name="reponse" value="{{ question.choix1 }}" required><br> -->
+            <!-- </label> -->
+            <!-- <label>
+                {{ question.choix2 }}
+                <input type="radio" name="reponse" value="{{ question.choix2 }}" required><br>
+            </label>
+            <label>
+                {{ question.choix3 }}
+                <input type="radio" name="reponse" value="{{ question.choix3 }}" required><br>
+            </label> -->
+            {% endfor %}
+        </fieldset>
+
+        <button type="submit">Suivant</button>
+    </form>
+</body>
+</html>

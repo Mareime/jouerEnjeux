@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authentification</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: url('https://source.unsplash.com/1920x1080/?technology,health') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Roboto', sans-serif;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+    .auth-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      position: relative;
+      z-index: 2;
+    }
+    .auth-box {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 3rem;
+      /* box-shadow: 0 8px 30px rgba(0, 0, 0, 0
+      : 100%; */
+      text-align: center;
+    }
+    .auth-box h2 {
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #4e73df;
+    }
+    .form-control {
+      background: #f8f9fc;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      height: 50px;
+      padding: 0 1rem;
+      font-size: 1rem;
+    }
+    .form-control:focus {
+      border-color: #4e73df;
+      box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+    }
+    .btn-primary {
+      background: #4e73df;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      height: 50px;
+    }
+    .btn-primary:hover {
+      background: #2e59d9;
+    }
+    .forgot-password {
+      color: #6c757d;
+      font-size: 0.9rem;
+    }
+    .forgot-password:hover {
+      color: #4e73df;
+      text-decoration: underline;
+    }
+    .register-link {
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      color: #4e73df;
+    }
+    .register-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="auth-container">
+    <div class="auth-box">
+      <h2>Bienvenue</h2>
+      <p class="mb-4">Connectez-vous pour accéder à votre compte.</p>
+      <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <input type="email" class="form-control" placeholder="Adresse Email" name="email" required>
+        </div>
+        <div class="mb-3">
+          <input type="password" class="form-control" placeholder="Mot de Passe" name="password" required>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Se Connecter</button>
+      </form>
+      <p class="register-link mt-4">Vous n'avez pas de compte ? <a href="{% url 'GetSunup' %}">S'inscrire maintenant</a></p>
+    </div>
+  </div>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
